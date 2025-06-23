@@ -1,0 +1,18 @@
+package com.firstms.employee_service.repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.firstms.employee_service.model.Employee;
+
+@Repository
+public class EmployeeRepository {
+	
+	List<Employee> employees = new ArrayList<>();
+	
+	
+
+	
+}

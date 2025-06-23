@@ -1,0 +1,5 @@
+package com.firstms.department_service.model;
+
+public class Department {
+
+}

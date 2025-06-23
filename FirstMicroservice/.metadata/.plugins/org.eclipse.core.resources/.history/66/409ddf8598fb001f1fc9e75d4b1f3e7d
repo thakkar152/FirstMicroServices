@@ -1,0 +1,5 @@
+package com.firstms.employee_service.controller;
+
+public class EmployeeController {
+
+}

@@ -1,0 +1,7 @@
+package com.firstms.employee_service.model;
+
+public class Employee {
+	
+	Long id, Long DepartmentId, String name, int age, String position;
+
+}

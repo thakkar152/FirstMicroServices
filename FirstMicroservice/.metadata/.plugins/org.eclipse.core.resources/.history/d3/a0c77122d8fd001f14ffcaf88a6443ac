@@ -1,0 +1,19 @@
+package com.firstms.department_service.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Configuration
+public class WebClientConfig {
+
+		//Creating object of WebClient. 
+		// Also letting this webclient to connect to employee-service of service registry.. We do not need to pass port or 
+		// which instance of employee service (there can be many). Its being load balanced by service regsitry. 
+	
+		@Bean
+		public WebClient employeeWebClient() {
+			return WebClient.builder().baseUrl("http://employee-service").build();
+			
+		}
+}

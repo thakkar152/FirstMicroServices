@@ -1,0 +1,13 @@
+package com.firstms.department_service.repository;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.firstms.department_service.model.Department;
+
+@Repository
+public class DepartmentRepository {
+
+	
+}

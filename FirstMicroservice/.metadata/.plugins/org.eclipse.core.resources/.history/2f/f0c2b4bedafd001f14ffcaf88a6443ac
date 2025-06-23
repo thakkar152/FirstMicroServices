@@ -1,0 +1,38 @@
+package com.firstms.department_service.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.reactive.LoadBalancedExchangeFilterFunction;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.support.WebClientAdapter;
+import org.springframework.web.service.invoker.HttpServiceProxyFactory;
+
+import com.firstms.department_service.client.EmployeeClient;
+
+@Configuration
+public class WebClientConfig {
+
+		//Creating object of WebClient. 
+		// Also letting this webclient to connect to employee-service of service registry (baseurl).. We do not need to pass port or 
+		// which instance of employee service (there can be many). Its being load balanced by service regsitry. 
+		// as employee service is balanced by load balancer, we have to tell webcline about that as well. 
+	
+		@Autowired
+		private LoadBalancedExchangeFilterFunction filterFunction;
+		
+		@Bean
+		public WebClient employeeWebClient() {
+			return WebClient.builder()
+					.baseUrl("http://employee-service")
+					.filter(filterFunction)
+					.build();
+			
+		}
+		
+		public static EmployeeClient employeeClient() {
+			HttpServiceProxyFactory httpServiceProxyFactory = HttpServiceProxyFactory
+					.builder(WebClientAdapter.)
+					.build();
+		}
+}

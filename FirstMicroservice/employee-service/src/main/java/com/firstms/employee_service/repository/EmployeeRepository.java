@@ -1,0 +1,37 @@
+package com.firstms.employee_service.repository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collector;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+
+import com.firstms.employee_service.model.Employee;
+
+@Repository
+public class EmployeeRepository {
+	
+	private List<Employee> employees = new ArrayList<>();
+	
+	public Employee add(Employee emp) {
+		employees.add(emp);
+		return emp;
+	}
+	
+	public Employee findById(Long id) {
+		return employees.stream().filter(emp -> emp.id().equals(id)).findFirst().orElseThrow();
+	}
+	
+	public List<Employee> findAll(){
+		return employees;
+	}
+	
+	public List<Employee> findByDepartmentId(Long id){
+		return employees.stream().filter(emp -> emp.departmentId().equals(id)).toList();
+	}
+	
+
+	
+}

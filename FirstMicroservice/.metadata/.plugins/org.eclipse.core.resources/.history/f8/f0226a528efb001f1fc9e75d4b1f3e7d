@@ -1,0 +1,29 @@
+package com.firstms.department_service.controller;
+
+
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.firstms.department_service.model.Department;
+import com.firstms.department_service.repository.DepartmentRepository;
+import org.slf4j.*;
+
+@RestController
+@RequestMapping("/department")
+public class DepartmentController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+	
+	@Autowired
+	private DepartmentRepository departmentRepository; 
+	
+	@GetMapping
+	public void addDepartment(@RequestBody Department department) {
+		departmentRepository.addDepartment(department);
+	}
+
+}

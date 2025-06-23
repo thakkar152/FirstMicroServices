@@ -1,0 +1,7 @@
+package com.firstms.department_service.model;
+
+public class Employee {
+	
+	Record(int id, String name);
+
+}

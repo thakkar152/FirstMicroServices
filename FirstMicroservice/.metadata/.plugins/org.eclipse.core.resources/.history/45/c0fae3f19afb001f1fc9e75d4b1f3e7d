@@ -1,0 +1,43 @@
+package com.firstms.employee_service.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.firstms.employee_service.model.Employee;
+import com.firstms.employee_service.repository.EmployeeRepository;
+
+@RestController
+@RequestMapping("/employee")
+public class EmployeeController {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@PostMapping
+	public Employee add(@RequestBody Employee emp) {
+		return employeeRepository.add(emp);
+	}
+	
+	@GetMapping("/{id}")
+	public Employee getById(@PathVariable Long id) {
+		return employeeRepository.findById(id);
+	}
+	
+	@GetMapping
+	public List<Employee> findAll() {
+		return employeeRepository.findAll();
+	}
+	
+	public List<Employee> findByDepartmentId(Long id){
+		return employeeRepository.findByDepartmentId(id)
+	}
+	
+
+}

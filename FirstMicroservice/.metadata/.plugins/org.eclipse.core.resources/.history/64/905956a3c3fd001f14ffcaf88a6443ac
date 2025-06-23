@@ -1,0 +1,8 @@
+package com.firstms.department_service.client;
+
+import org.springframework.web.service.annotation.HttpExchange;
+
+@HttpExchange 
+interface EmployeeClient {
+
+}
